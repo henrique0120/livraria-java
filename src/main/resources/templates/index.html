@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Livraria - Início</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 900px;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        .alunos {
+            background-color: #007BFF;
+        }
+
+        .responsaveis {
+            background-color: #28a745;
+        }
+
+        .livros {
+            background-color: #8B4513; /* marrom */
+            cursor: pointer;
+        }
+
+        .multas {
+            background-color: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Sistema de Livraria</h1>
+
+    <div class="menu">
+
+        <!-- Alunos -->
+        <a href="/alunos" class="card alunos">
+            📚 Alunos
+        </a>
+
+        <!-- Responsáveis -->
+        <a href="/responsaveis" class="card responsaveis">
+            👨‍👩‍👧 Responsáveis
+        </a>
+
+        <!-- Livros (habilitado) -->
+        <a href="/exemplares/lista" class="card livros">
+            📖 Livros
+        </a>
+
+        <!-- Multas (desabilitado) -->
+        <div class="card multas disabled">
+            💰 Multas (em breve)
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

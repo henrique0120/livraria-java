@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exemplares de Livros</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            text-decoration: none;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Exemplares de Livros</h1>
+
+    <div class="btn-container">
+        <a class="btn" th:href="@{/}">Voltar</a>
+        <a class="btn" href="/livros/form">Adicionar livro</a>
+        <a class="btn" href="/exemplares/form">Adicionar exemplar</a>
+    </div>
+
+    <h2>Lista de Exemplares</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Descrição</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ex : ${exemplares}">
+                <td th:text="${ex.cod}"></td>
+                <td th:text="${ex.livro.titulo}"></td>
+                <td th:text="${ex.livro.autor != null ? ex.livro.autor.nome : 'Sem autor'}"></td>
+                <td th:text="${ex.livro.genero != null ? ex.livro.genero.nome : 'Sem gênero'}"></td>
+                <td th:text="${ex.livro.descricao}"></td>
+                <td th:text="${ex.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

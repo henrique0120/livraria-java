@@ -16,7 +16,7 @@ public class Aluno {
     @Column(name = "RA", unique = true, nullable = false)
     private String ra;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idResponsavel")
     private Responsavel responsavel;
 

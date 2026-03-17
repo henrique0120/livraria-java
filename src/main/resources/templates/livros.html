@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Livros</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .erro {
+            background-color: #ffe5e5;
+            color: #cc0000;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .link {
+            display: block;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+        }
+
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .acoes a {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .acoes .editar { background-color: #28a745; }
+        .acoes .deletar { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Cadastro de Livros</h1>
+
+    <div th:if="${erro}" class="erro">
+        <p th:text="${erro}"></p>
+    </div>
+
+    <!-- Formulário de cadastro/edição -->
+    <form th:action="@{/livros/salvar}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Título:</label>
+        <input type="text" th:field="*{Titulo}" required />
+
+        <label>Autor:</label>
+        <select name="autorId" required>
+            <option value="">Selecione</option>
+            <option th:each="autor : ${autores}"
+                    th:value="${autor.id}"
+                    th:text="${autor.Nome}"
+                    th:selected="${livro.autor != null} ? ${autor.id} == ${livro.autor.id} : false">
+            </option>
+        </select>
+
+        <label>Gênero:</label>
+        <select name="generoId" required>
+            <option value="">Selecione</option>
+            <option th:each="genero : ${generos}"
+                    th:value="${genero.id}"
+                    th:text="${genero.Nome}"
+                    th:selected="${livro.genero != null} ? ${genero.id} == ${livro.genero.id} : false">
+            </option>
+        </select>
+
+        <label>Descrição:</label>
+        <textarea th:field="*{Descricao}" rows="3"></textarea>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr/>
+
+    <h2>Lista de Livros</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.id}"></td>
+            <td th:text="${livro.Titulo}"></td>
+            <td th:text="${livro.autor != null ? livro.autor.Nome : 'Sem autor'}"></td>
+            <td th:text="${livro.genero != null ? livro.genero.Nome : 'Sem gênero'}"></td>
+            <td th:text="${livro.Descricao}"></td>
+            <td class="acoes">
+                <a th:href="@{/livros/editar/{id}(id=${livro.id})}" class="editar">Editar</a>
+                <a th:href="@{/livros/deletar/{id}(id=${livro.id})}" class="deletar" onclick="return confirm('Confirma exclusão?')">Deletar</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="link">
+        <a href="/">⬅ Voltar à página inicial</a>
+    </div>
+
+</div>
+
+</body>
+</html>

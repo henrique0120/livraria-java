@@ -132,16 +132,24 @@
         <tr>
             <th>Nome</th>
             <th>CPF</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
         </tr>
 
         <tr th:each="r : ${responsaveis}">
             <td th:text="${r.nome}"></td>
             <td th:text="${r.cpf}"></td>
+            <td th:text="${r.endereco}"></td>
+            <td th:text="${r.telefone}"></td>
         </tr>
     </table>
 
     <div class="link">
-        <a href="/alunos">← Voltar para Alunos</a>
+        <a href="/alunos">Voltar para Alunos</a>
+    </div>
+
+    <div class="link">
+        <a th:href="@{/}">Home</a>
     </div>
 
 </div>

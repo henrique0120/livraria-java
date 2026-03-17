@@ -48,6 +48,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         button:hover {
@@ -63,9 +64,7 @@
         }
 
         .link {
-            display: block;
             margin-bottom: 15px;
-            text-align: right;
         }
 
         .link a {
@@ -104,10 +103,17 @@
 
     <h1>Cadastro de Alunos</h1>
 
+    <!-- Botão Voltar -->
+    <div class="link">
+        <a class="btn-voltar" th:href="@{/}">Home</a>
+    </div>
+
+    <!-- Mensagem de erro -->
     <div th:if="${erro}" class="erro">
         <p th:text="${erro}"></p>
     </div>
 
+    <!-- Formulário de cadastro -->
     <form th:action="@{/alunos}" th:object="${aluno}" method="post">
 
         <label>Nome:</label>
@@ -134,6 +140,7 @@
 
     <hr/>
 
+    <!-- Lista de alunos -->
     <h2>Lista de Alunos</h2>
 
     <table>
@@ -141,12 +148,13 @@
             <th>ID</th>
             <th>Nome</th>
             <th>RA</th>
+            <th>Responsável</th>
         </tr>
-
         <tr th:each="aluno : ${alunos}">
             <td th:text="${aluno.id}"></td>
             <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.ra}"></td>
+            <td th:text="${aluno.responsavel != null ? aluno.responsavel.nome : 'Sem responsável'}"></td>
         </tr>
     </table>
 
