@@ -1,6 +1,4 @@
-Perfeito! Podemos atualizar seu README para refletir as **novas implementações**, como a tela de exemplares, o redirecionamento no menu principal e o botão “Voltar” nas telas de cadastro. Segue a versão revisada e atualizada:
 
-````markdown
 # 📚 Sistema de Controle de Empréstimos - Livraria Escolar
 
 ## 📌 Descrição
