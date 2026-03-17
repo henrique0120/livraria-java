@@ -155,7 +155,7 @@ mvn clean install
 
 antes de rodar o projeto, para garantir que todas as dependências estão corretas.
 
-```
+
 
 ✅ **Principais atualizações adicionadas:**
 - Inclusão de **Livros / Exemplares** habilitados no menu principal (cor marrom).  
@@ -166,4 +166,4 @@ antes de rodar o projeto, para garantir que todas as dependências estão corret
 Se quiser, posso também **adicionar imagens das telas** no README para deixá-lo mais intuitivo e visual.  
 
 Quer que eu faça isso?
-```
+
