@@ -163,7 +163,4 @@ antes de rodar o projeto, para garantir que todas as dependências estão corret
 - Atualização das funcionalidades atuais para refletir o **cadastro de exemplares**.  
 - Explicação visual do **menu com cards coloridos**.
 
-Se quiser, posso também **adicionar imagens das telas** no README para deixá-lo mais intuitivo e visual.  
-
-Quer que eu faça isso?
 
